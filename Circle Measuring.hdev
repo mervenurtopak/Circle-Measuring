@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.1" halcon_version="17.12">
+<procedure name="main">
+<interface/>
+<body>
+<l>dev_update_off ()</l>
+<l>dev_close_window ()</l>
+<l>dev_open_window (0, 0, 512, 512, 'black', WindowHandle)</l>
+<l>set_display_font (WindowHandle, 16, 'mono', 'true', 'false')</l>
+<l>read_image (Rim1, 'F:/Visiomex/Rim1.jpg')</l>
+<l>rgb1_to_gray (Rim1, GrayImage)</l>
+<l>dev_display (Rim1)</l>
+<l>disp_continue_message (WindowHandle, 'black', 'true')</l>
+<l>stop()</l>
+<c></c>
+<c></c>
+<l>threshold (Rim1, Region, 250, 255)</l>
+<l>dev_display (Region)</l>
+<l>dev_set_color ('red')</l>
+<l>dev_set_draw ('fill')</l>
+<l>dev_display (Region)</l>
+<l>disp_continue_message (WindowHandle, 'black', 'true')</l>
+<l>connection (Region, ConnectedRegions)</l>
+<l>select_shape (ConnectedRegions, SelectedRegions, 'area', 'and', 150, 300)</l>
+<l>circularity (SelectedRegions, Circularity)</l>
+<c></c>
+<c></c>
+<l>dev_display (Rim1)</l>
+<l>dev_set_colored (12)</l>
+<l>dev_display (SelectedRegions)</l>
+<c></c>
+<l>disp_continue_message (WindowHandle, 'black', 'true')</l>
+<l>stop()</l>
+<c></c>
+<l>dilation_circle (SelectedRegions, RegionDilation, 3.5)</l>
+<l>erosion_circle (RegionDilation, RegionErosion, 3.5)</l>
+<c></c>
+<c></c>
+<l>dev_display (Rim1)</l>
+<l>dev_set_draw ('fill')</l>
+<l>dev_set_line_width (3)</l>
+<l>dev_set_color ('green')</l>
+<l>disp_continue_message (WindowHandle, 'black', 'true')</l>
+<l>stop ()</l>
+<c></c>
+<l>dilation_circle (RegionErosion, RegionDilation1, 3.5)</l>
+<l>erosion_circle (RegionDilation1, RegionErosion1, 3.5)</l>
+<c></c>
+<l>dev_display (Rim1)</l>
+<l>dev_set_draw ('margin')</l>
+<l>dev_set_line_width (3)</l>
+<l>dev_set_color ('yellow')</l>
+<l>disp_continue_message (WindowHandle, 'black', 'true')</l>
+<l>stop ()</l>
+<c></c>
+<c></c>
+<l>dilation_circle (RegionErosion1, RegionDilation2, 3.5)</l>
+<l>erosion_circle (RegionDilation2, RegionErosion2, 3.5)</l>
+<c></c>
+<l>dev_display (Rim1)</l>
+<l>dev_set_draw ('margin')</l>
+<l>dev_set_line_width (3)</l>
+<l>dev_set_color ('pink')</l>
+<l>disp_continue_message (WindowHandle, 'black', 'true')</l>
+<l>stop ()</l>
+<c></c>
+<c></c>
+<c></c>
+<c></c>
+<c></c>
+<c></c>
+<c></c>
+<c></c>
+<c></c>
+<c></c>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>
